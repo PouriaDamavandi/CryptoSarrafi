@@ -5,6 +5,10 @@ import { getCoins } from "../services/api";
 
 // Components
 import Loader from "./Loader";
+import Coin from "./Coin";
+
+//css
+import styles from "./Landing.module.css"
 
 const Landing = () => {
   useEffect(() => {
@@ -16,14 +20,29 @@ const Landing = () => {
   }, []);
 
   const [coins, setCoins] = useState([]);
+  const [search, setSearch] =useState("");
 
+  const searchHandler = event => {
+    setSearch(event.target.value);
+  }
+
+  const searchedCoins = coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()));
   return (
     <>
-      <input type="text" placeholder="Search" />
+      <input type="text" className={styles.input} placeholder="Search" value={search} onChange={searchHandler}/>
       {coins.length ? (
-        <div>
-          {coins.map((coin) => (
-            <p key={coin.id}>{coin.name}</p>
+        <div className={styles.coinContainer}>
+          {searchedCoins.map((coin) => ( <Coin 
+           key={coin.id}
+           name={coin.name}
+           image={coin.image}
+           symbol={coin.symbol}
+           currentPrice={coin.current_price}
+           high24h={coin.high_24h}
+           low24h={coin.low_24h}
+           marketcap={coin.market_cap}
+           priceChange={coin.price_change_percentage_24h}
+           />
           ))}
         </div>
       ) : (
