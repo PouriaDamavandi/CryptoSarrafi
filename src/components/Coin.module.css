@@ -13,12 +13,12 @@
 }
 
 .image {
-  width: 30px;
+  width: 60px;
 }
 
 .name {
-  width: 140px;
-  font-size: 14xp;
+  width: 200px;
+  font-size: 20px;
   margin-left: 15px;
   text-align: left;
   font-weight: bold;
@@ -28,11 +28,15 @@
 .symbol {
   text-align: left;
   width: 100px;
+  font-weight: bold;
+  font-size: 18px;
+
 }
 
 .currentPrice {
   text-align: left;
   width: 100px;
+  font-size: 18px;
 }
 
 .greenPriceChange,
@@ -40,6 +44,8 @@
   width: 100px;
   text-align: left;
   font-weight: bold;
+  font-size: 18px;
+
 }
 
 .redPriceChange {
